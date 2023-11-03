@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>withflex</title>
+    <style>
+        *{
+            margin: 0;
+        }
+        html,body{
+            height: 100%;
+            background-color: aliceblue;
+        }
+        .container{
+            background-color: beige;
+            display: flex;
+            min-height: 100%;
+            position: relative;
+        }
+        .sidebar{
+            background-color: antiquewhite;
+            position: absolute;
+            width: 20%;
+            left: -20%;
+            transition: left 0.1s linear;
+        }
+        .sidebar.open{
+            left: 0%;
+        }
+        .mainbody{
+            background-color: aqua;
+            left: 0%;
+            transition: left 0.1s linear;
+            position: relative;
+        }
+
+        .mainbody.open{
+            left: 20%
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar" id="sidebar">
+            <button onclick="clickfn('close')">close</button>
+            <div>Home</div>
+            <div>About</div>
+        </div>
+        <div class="mainbody" id="mainbody">
+            <div><button onclick="clickfn('open')">open</button></div>
+            <div>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum, expedita totam. Culpa rerum hic corporis facere! Libero minus iure a sunt, quis quas vel obcaecati, repudiandae suscipit aut animi laudantium.
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+    let sidebar = document.getElementById("sidebar");
+    for(let i=0;i<60;i++){
+        let item =document.createElement("div");
+        item.innerText=`hey ${Math.random()}`;
+        sidebar.appendChild(item);
+    }
+
+    let clickfn = (type)=>{
+        if(type=="open"){
+            sidebar.classList.add("open");
+            mainbody.classList.add("open");
+
+        }
+        else{
+            sidebar.classList.remove("open");
+            mainbody.classList.remove("open");
+
+        }
+    }
+</script>
+</html>
